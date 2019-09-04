@@ -11,6 +11,7 @@
 		5D369ACD21C842620074D187 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D369ACC21C842620074D187 /* ViewController.swift */; };
 		5D369ACF21C842630074D187 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D369ACE21C842630074D187 /* Assets.xcassets */; };
 		5D369AD221C842630074D187 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D369AD021C842630074D187 /* Main.storyboard */; };
+		5D9D9D6721C94FDB00CE8CF5 /* ToggleDarkMode.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D9D6621C94FDB00CE8CF5 /* ToggleDarkMode.scpt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		5D369AD121C842630074D187 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5D369AD321C842630074D187 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D369AD421C842630074D187 /* Switch_Appearence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Switch_Appearence.entitlements; sourceTree = "<group>"; };
+		5D9D9D6621C94FDB00CE8CF5 /* ToggleDarkMode.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = ToggleDarkMode.scpt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +55,10 @@
 		5D369AC921C842620074D187 /* Switch Appearence */ = {
 			isa = PBXGroup;
 			children = (
-				5D369ACA21C842620074D187 /* AppDelegate.swift */,
-				5D369ACC21C842620074D187 /* ViewController.swift */,
 				5D369ACE21C842630074D187 /* Assets.xcassets */,
+				5D369ACA21C842620074D187 /* AppDelegate.swift */,
+				5D9D9D6621C94FDB00CE8CF5 /* ToggleDarkMode.scpt */,
+				5D369ACC21C842620074D187 /* ViewController.swift */,
 				5D369AD021C842630074D187 /* Main.storyboard */,
 				5D369AD321C842630074D187 /* Info.plist */,
 				5D369AD421C842630074D187 /* Switch_Appearence.entitlements */,
@@ -95,6 +98,7 @@
 				TargetAttributes = {
 					5D369AC621C842620074D187 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -123,6 +127,7 @@
 			files = (
 				5D369ACF21C842630074D187 /* Assets.xcassets in Resources */,
 				5D369AD221C842630074D187 /* Main.storyboard in Resources */,
+				5D9D9D6721C94FDB00CE8CF5 /* ToggleDarkMode.scpt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +286,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Joel-Johnson.Switch-Appearence";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -299,7 +304,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Joel-Johnson.Switch-Appearence";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
