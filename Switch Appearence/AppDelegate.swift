@@ -18,6 +18,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem.button {
             button.image = NSImage(named:NSImage.Name("Icon"))
             constructMenu() // calls function to build menu
+            
+            // determine if system is in light or dark mode
+            let out = shell(lPath: "/bin/bash", args:["-c", "defaults read -g AppleInterfaceStyle"])
+            print(out)
+            if out.contains("Dark") {
+                print("System is in dark mode")
+            }
+            else {
+                print("system is in light mode")
+            }
         }
     }
     
@@ -28,7 +38,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // function that switches dark/light mode
     @objc func switch_mode(_ sender: Any?) {
-        
         let task = Process();
         task.launchPath = "/usr/bin/osascript"
         task.arguments = ["/Users/Joel/Switch Appearence/Switch Appearence/ToggleDarkMode.scpt"]
@@ -38,9 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // generates list of installed .apps from /applications
     func buildAppList() -> Array<String> {
-        
         // list of bundle ID's from apple apps
-        // maybe add xcode ??
         let macosApps = ["com.apple.AppStore", "com.apple.iBooksX", "com.apple.calculator", "com.apple.iCal",
                         "com.apple.AddressBook", "com.apple.dashboardlauncher", "com.apple.Dictionary",
                         "com.apple.FaceTime", "com.apple.FontBook", "com.apple.iWork.Keynote", "com.apple.mail",
@@ -51,21 +58,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         "com.apple.iMovieApp", "com.apple.iTunes"]
         
         print(macosApps)
-        
         return macosApps
         
     }
+    
+    // returns output of bash commands
+    func shell(lPath: String, args: [String]) -> String {
+        let task = Process()
+        task.launchPath = lPath
+        task.arguments = args
+
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.launch()
+        
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output: String = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
+        task.waitUntilExit()
+        
+        return output
+    }
+    
     
     
     // builds menu items
     func constructMenu() {
         // checks current system appearence
         // var cur_appearence = NSAppearance * appearance
-        let appList = buildAppList()
     
         let menu = NSMenu() // menu object
         
+        // keyEquivalent specifies key command, lowercase used cmd, uppercase uses cmd + shift
+        //menu.addItem(NSMenuItem(title: "✔ Light Mode", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: "l"))
+        menu.addItem(NSMenuItem(title: "✔ Toggle Dark Mode", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: "d"))
+        menu.addItem(NSMenuItem.separator())
+        
+        let appList = buildAppList()
         for app in appList {
+  
+            //let app = Bundle.main.object(forInfoDictionaryKey: app) as! String
             print(app)
             menu.addItem(NSMenuItem(title: "✔ \(app)", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: ""))
         }
@@ -78,10 +109,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         
-        
-        // keyEquivalent specifies key command, lowercase used cmd, uppercase uses cmd + shift
-        menu.addItem(NSMenuItem(title: "✔ Light Mode", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: "l"))
-        menu.addItem(NSMenuItem(title: "✔ Dark Mode", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: "d"))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         
