@@ -17,17 +17,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
             button.image = NSImage(named:NSImage.Name("Icon"))
-            constructMenu() // calls function to build menu
             
             // determine if system is in light or dark mode
             let out = shell(lPath: "/bin/bash", args:["-c", "defaults read -g AppleInterfaceStyle"])
             print(out)
+            
+            var lightSetting: String = "null"
+            
             if out.contains("Dark") {
-                print("System is in dark mode")
+                lightSetting = "Toggle Light Mode"
             }
             else {
-                print("system is in light mode")
+                lightSetting = "Toggle Dark Mode"
             }
+            constructMenu(sysSetting: lightSetting) // calls function to build menu
+            
         }
     }
     
@@ -35,54 +39,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     
-    
+ 
     // function that switches dark/light mode
     @objc func switch_mode(_ sender: Any?) {
         let task = Process();
         task.launchPath = "/usr/bin/osascript"
         task.arguments = ["/Users/Joel/Switch Appearence/Switch Appearence/ToggleDarkMode.scpt"]
         task.launch()
-        
     }
-    
-    // generates list of installed .apps from /applications
-    func buildAppList() -> Array<String> {
-        // list of bundle ID's from apple apps
-        let macosApps = ["com.apple.AppStore", "com.apple.iBooksX", "com.apple.calculator", "com.apple.iCal",
-                        "com.apple.AddressBook", "com.apple.dashboardlauncher", "com.apple.Dictionary",
-                        "com.apple.FaceTime", "com.apple.FontBook", "com.apple.iWork.Keynote", "com.apple.mail",
-                        "com.apple.Image_Capture", "com.apple.Maps", "com.apple.iChat", "com.apple.Notes", "com.apple.news",
-                        "com.apple.iWork.Numbers", "com.apple.iWork.Pages", "com.apple.PhotoBooth", "com.apple.Photos",
-                        "com.apple.Preview", "com.apple.QuickTimePlayerX", "com.apple.reminders", "com.apple.Safari",
-                        "com.apple.stocks", "com.apple.systempreferences", "com.apple.TextEdit", "com.apple.VoiceMemos",
-                        "com.apple.iMovieApp", "com.apple.iTunes"]
-        
-        print(macosApps)
-        return macosApps
-        
-    }
-    
-    // returns output of bash commands
-    func shell(lPath: String, args: [String]) -> String {
-        let task = Process()
-        task.launchPath = lPath
-        task.arguments = args
-
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        task.launch()
-        
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output: String = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
-        task.waitUntilExit()
-        
-        return output
-    }
-    
-    
     
     // builds menu items
-    func constructMenu() {
+    func constructMenu(sysSetting: String) {
         // checks current system appearence
         // var cur_appearence = NSAppearance * appearance
     
@@ -90,32 +57,46 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // keyEquivalent specifies key command, lowercase used cmd, uppercase uses cmd + shift
         //menu.addItem(NSMenuItem(title: "✔ Light Mode", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: "l"))
-        menu.addItem(NSMenuItem(title: "✔ Toggle Dark Mode", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: "d"))
+        menu.addItem(NSMenuItem(title: sysSetting, action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: "d"))
         menu.addItem(NSMenuItem.separator())
         
         let appList = buildAppList()
+        
+        
+        // get light status for each object and put into menu
+        var str = ""
         for app in appList {
-  
-            //let app = Bundle.main.object(forInfoDictionaryKey: app) as! String
-            print(app)
-            menu.addItem(NSMenuItem(title: "✔ \(app)", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: ""))
+    
+            //guard let appName = bundleIDFor(appNamed: app) else { return }
+            let appName = bundleIDFor(appNamed: app)
+            print(appName)
+            print("is this light or dark?")
+            let exempt = lightStatus(app: appName)
+            print("end this\n\n")
+            
+            if exempt == true {
+                str = "✔ \(app)"
+                //str = str.padding(toLength: 40, withPad: " ", startingAt: 0)
+                //str += "✔"
+            }
+            else {
+                str = "    \(app)"
+            }
+            menu.addItem(NSMenuItem(title: "\(str)", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: ""))
         }
         
-        
+        /*
         if let path = Bundle.main.path(forResource: "/Applications/Calculator.app/Contents/Info.plist", ofType: "plist"),
             let myDict = NSDictionary(contentsOfFile: path){
             print(myDict)
             print("here")
         }
-        
+        */
         
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         
         statusItem.menu = menu
+        
     }
-    
 }
-
-
-
