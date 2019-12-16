@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // initialize on app launch
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
-            button.image = NSImage(named:NSImage.Name("Icon"))
+            button.image = NSImage(named:NSImage.Name("Image"))
             
             // determine if system is in light or dark mode
             let out = shell(lPath: "/bin/bash", args:["-c", "defaults read -g AppleInterfaceStyle"])
@@ -62,7 +62,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let appList = buildAppList()
         
-        
+        //let a = NSMenuItem(withTitle: "Apps Exempt from Dark Mode:")
+        //a.isEnabled = false
+        //menu.addItem(a)
         // get light status for each object and put into menu
         var str = ""
         for app in appList {
@@ -84,14 +86,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             menu.addItem(NSMenuItem(title: "\(str)", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: ""))
         }
-        
-        /*
-        if let path = Bundle.main.path(forResource: "/Applications/Calculator.app/Contents/Info.plist", ofType: "plist"),
-            let myDict = NSDictionary(contentsOfFile: path){
-            print(myDict)
-            print("here")
-        }
-        */
         
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
