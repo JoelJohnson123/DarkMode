@@ -60,32 +60,42 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(NSMenuItem(title: sysSetting, action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: "d"))
         menu.addItem(NSMenuItem.separator())
         
+        let a = NSMenuItem(title: "grayed out", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: "")
+        a.isHidden = false
+        menu.addItem(a)
+        
         let appList = buildAppList()
         
-        //let a = NSMenuItem(withTitle: "Apps Exempt from Dark Mode:")
-        //a.isEnabled = false
-        //menu.addItem(a)
-        // get light status for each object and put into menu
         var str = ""
+        // keeps list of all appInfo objects
+        var allAppInfos: [appInfo] = []
         for app in appList {
     
-            //guard let appName = bundleIDFor(appNamed: app) else { return }
-            let appName = bundleIDFor(appNamed: app)
-            print(appName)
-            print("is this light or dark?")
+            let appName = bundleIDFor(appName: app)
+            //print(appName)
+            //print("is this light or dark?")
             let exempt = lightStatus(app: appName)
             print("end this\n\n")
             
             if exempt == true {
-                str = "✔ \(app)"
+                str = "✔\(app)"
                 //str = str.padding(toLength: 40, withPad: " ", startingAt: 0)
                 //str += "✔"
             }
             else {
-                str = "    \(app)"
+                str = "   \(app)"
             }
+            let data = appInfo(name: app, bundleID: appName, exempt: exempt)
+            allAppInfos.append(data)
+          
+            
             menu.addItem(NSMenuItem(title: "\(str)", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: ""))
         }
+        
+        for app in allAppInfos {
+            print("\(app.name) --> \(app.bundleID) --> \(app.exempt)")
+        }
+        getIcon(bundleID: "Mail.app")
         
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))

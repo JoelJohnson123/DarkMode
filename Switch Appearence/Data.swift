@@ -13,12 +13,12 @@ import Foundation
 class appInfo {
     var name:String
     var bundleID:String
-    var dark:Bool
+    var exempt:Bool
     
-    init(name:String, bundleID:String, dark:Bool) {
+    init(name:String, bundleID:String, exempt:Bool) {
         self.name = name
         self.bundleID = bundleID
-        self.dark = dark
+        self.exempt = exempt // true if force light mode for system dark mode
         
     }
 }

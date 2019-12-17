@@ -50,7 +50,7 @@ func shell(lPath: String, args: [String]) -> String {
 }
 
 
-func bundleIDFor(appNamed appName: String) -> String {
+func bundleIDFor(appName: String) -> String {
     if let appPath = NSWorkspace.shared.fullPath(forApplication: appName) {
         if let itsBundle = Bundle(path: appPath) { // < in my build this condition fails if we're looking for the ID of the app we're running...
             if let itsID = itsBundle.bundleIdentifier {
@@ -67,6 +67,21 @@ func bundleIDFor(appNamed appName: String) -> String {
     }
     return "nil"
 }
+
+// get icon file from bundleID
+func getIcon(bundleID: String) {
+    if let appPath = NSWorkspace.shared.fullPath(forApplication: bundleID) {
+        if let itsBundle = Bundle(path: appPath) {
+            let icon = itsBundle.image
+            print(icon)
+                   //return icon
+               
+        }
+    }
+    //return nil
+}
+
+
 
 // gets dark mode exclusion for an app, 1 means dark when dark, 0 means light when dark
 func lightStatus(app:String) -> Bool{
