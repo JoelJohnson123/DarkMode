@@ -1,10 +1,5 @@
-//
-//  Data.swift
-//  Switch Appearence
-//
-//  Created by Joel Johnson on 12/15/19.
-//  Copyright © 2019 Joel Johnson. All rights reserved.
-//
+// Data.swift
+
 
 import Foundation
 

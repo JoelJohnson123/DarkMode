@@ -12,15 +12,6 @@ import Foundation
 // generates list of installed .apps from /applications
 func buildAppList() -> Array<String> {
     // list of bundle ID's from apple apps
-    let macosApps = ["com.apple.AppStore", "com.apple.iBooksX", "com.apple.calculator", "com.apple.iCal",
-                    "com.apple.AddressBook", "com.apple.Dictionary",
-                    "com.apple.FaceTime", "com.apple.FontBook", "com.apple.iWork.Keynote", "com.apple.mail",
-                    "com.apple.Image_Capture", "com.apple.Maps", "com.apple.iChat", "com.apple.Notes", "com.apple.news",
-                    "com.apple.iWork.Numbers", "com.apple.iWork.Pages", "com.apple.PhotoBooth", "com.apple.Photos",
-                    "com.apple.Preview", "com.apple.QuickTimePlayerX", "com.apple.reminders", "com.apple.Safari",
-                    "com.apple.stocks", "com.apple.systempreferences", "com.apple.TextEdit", "com.apple.VoiceMemos",
-                    "com.apple.iMovieApp", "com.apple.iTunes"]
-    
     let appIds = ["Activity Monitor.app", "App Store.app", "Books.app", "Calculator.app", "Calendar.app", "Contacts.app",
                   "Dictionary.app", "FaceTime.app", "Finder.app", "Font Book.app", "GarageBand.app", "Google Chrome.app",
                   "iMovie.app", "iTunes.app", "Keynote.app", "Mail.app", "Maps.app", "Messages.app", "News.app",
@@ -84,8 +75,8 @@ func getIcon(bundleID: String) {
 
 
 // gets dark mode exclusion for an app, 1 means dark when dark, 0 means light when dark
-func lightStatus(app:String) -> Bool{
-    let status = shell(lPath: "/bin/bash", args:["-c", "defaults read \(app) NSRequiresAquaSystemAppearance"])
+func lightStatus(bundleID:String) -> Bool{
+    let status = shell(lPath: "/bin/bash", args:["-c", "defaults read \(bundleID) NSRequiresAquaSystemAppearance"])
     print("status: \(status)")
 
     if status == "1\n" { return true }

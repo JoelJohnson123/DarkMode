@@ -1,10 +1,5 @@
-//
 //  ViewController.swift
 //  Switch Appearence
-//
-//  Created by Joel Johnson on 12/17/18.
-//  Copyright © 2018 Joel Johnson. All rights reserved.
-//
 
 import Cocoa
 
