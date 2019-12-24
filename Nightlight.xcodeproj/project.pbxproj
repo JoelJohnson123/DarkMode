@@ -17,13 +17,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5D369AC721C842620074D187 /* Switch Appearence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Switch Appearence.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D369AC721C842620074D187 /* Nightlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nightlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D369ACA21C842620074D187 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D369ACC21C842620074D187 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5D369ACE21C842630074D187 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D369AD121C842630074D187 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5D369AD321C842630074D187 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D369AD421C842630074D187 /* Switch_Appearence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Switch_Appearence.entitlements; sourceTree = "<group>"; };
+		5D369AD421C842630074D187 /* Nightlight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nightlight.entitlements; sourceTree = "<group>"; };
 		5D50BABD23A6C3D0009B8674 /* LightDark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDark.swift; sourceTree = "<group>"; };
 		5D50BABF23A6D085009B8674 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		5D9D9D6621C94FDB00CE8CF5 /* ToggleDarkMode.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = ToggleDarkMode.scpt; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 		5D369ABE21C842620074D187 = {
 			isa = PBXGroup;
 			children = (
-				5D369AC921C842620074D187 /* Switch Appearence */,
+				5D369AC921C842620074D187 /* Nightlight */,
 				5D369AC821C842620074D187 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,12 +51,12 @@
 		5D369AC821C842620074D187 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5D369AC721C842620074D187 /* Switch Appearence.app */,
+				5D369AC721C842620074D187 /* Nightlight.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5D369AC921C842620074D187 /* Switch Appearence */ = {
+		5D369AC921C842620074D187 /* Nightlight */ = {
 			isa = PBXGroup;
 			children = (
 				5D369ACE21C842630074D187 /* Assets.xcassets */,
@@ -67,17 +67,17 @@
 				5D369ACC21C842620074D187 /* ViewController.swift */,
 				5D369AD021C842630074D187 /* Main.storyboard */,
 				5D369AD321C842630074D187 /* Info.plist */,
-				5D369AD421C842630074D187 /* Switch_Appearence.entitlements */,
+				5D369AD421C842630074D187 /* Nightlight.entitlements */,
 			);
-			path = "Switch Appearence";
+			path = Nightlight;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5D369AC621C842620074D187 /* Switch Appearence */ = {
+		5D369AC621C842620074D187 /* Nightlight */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5D369AD721C842630074D187 /* Build configuration list for PBXNativeTarget "Switch Appearence" */;
+			buildConfigurationList = 5D369AD721C842630074D187 /* Build configuration list for PBXNativeTarget "Nightlight" */;
 			buildPhases = (
 				5D369AC321C842620074D187 /* Sources */,
 				5D369AC421C842620074D187 /* Frameworks */,
@@ -87,9 +87,9 @@
 			);
 			dependencies = (
 			);
-			name = "Switch Appearence";
-			productName = "Switch Appearence";
-			productReference = 5D369AC721C842620074D187 /* Switch Appearence.app */;
+			name = Nightlight;
+			productName = Nightlight;
+			productReference = 5D369AC721C842620074D187 /* Nightlight.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5D369AC221C842620074D187 /* Build configuration list for PBXProject "Switch Appearence" */;
+			buildConfigurationList = 5D369AC221C842620074D187 /* Build configuration list for PBXProject "Nightlight" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -121,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5D369AC621C842620074D187 /* Switch Appearence */,
+				5D369AC621C842620074D187 /* Nightlight */,
 			);
 		};
 /* End PBXProject section */
@@ -284,16 +284,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Switch Appearence/Switch_Appearence.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Nightlight/Switch_Appearence.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Switch Appearence/Info.plist";
+				INFOPLIST_FILE = Nightlight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Joel-Johnson.Switch-Appearence";
+				PRODUCT_BUNDLE_IDENTIFIER = "Joel-Johnson.Nightlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -307,12 +307,12 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Switch Appearence/Info.plist";
+				INFOPLIST_FILE = Nightlight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Joel-Johnson.Switch-Appearence";
+				PRODUCT_BUNDLE_IDENTIFIER = "Joel-Johnson.Nightlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -321,7 +321,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5D369AC221C842620074D187 /* Build configuration list for PBXProject "Switch Appearence" */ = {
+		5D369AC221C842620074D187 /* Build configuration list for PBXProject "Nightlight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D369AD521C842630074D187 /* Debug */,
@@ -330,7 +330,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5D369AD721C842630074D187 /* Build configuration list for PBXNativeTarget "Switch Appearence" */ = {
+		5D369AD721C842630074D187 /* Build configuration list for PBXNativeTarget "Nightlight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D369AD821C842630074D187 /* Debug */,

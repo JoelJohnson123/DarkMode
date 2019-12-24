@@ -40,23 +40,23 @@ func shell(lPath: String, args: [String]) -> String {
     return output
 }
 
-
-func bundleIDFor(appName: String) -> String {
+// return path to app and bundle id given name of app
+func bundleIDFor(appName: String) -> (String?, String) {
     if let appPath = NSWorkspace.shared.fullPath(forApplication: appName) {
         if let itsBundle = Bundle(path: appPath) { // < in my build this condition fails if we're looking for the ID of the app we're running...
             if let itsID = itsBundle.bundleIdentifier {
                 print(itsID)
-                return itsID
+                return (appPath, itsID)
             }
         } else {
             //Attempt to get the current running app.
             //This is probably too simplistic a catch for every single possibility
             if let ownID =  Bundle.main.bundleIdentifier {
-                return ownID
+                return (nil, ownID)
             }
         }
     }
-    return "nil"
+    return (nil, "app name never found")
 }
 
 // get icon file from bundleID

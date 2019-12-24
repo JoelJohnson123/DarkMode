@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Switch Appearence.xcodeproj">
+      location = "self:/Users/Joel/Switch Appearence/Nightlight.xcodeproj">
    </FileRef>
 </Workspace>

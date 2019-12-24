@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        print("\nquitting...")
     }
     
  
@@ -82,16 +82,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // builds menu items
     func constructMenu(sysSetting: String) {
-        // checks current system appearence
-        // var cur_appearence = NSAppearance * appearance
-    
         let menu = NSMenu() // menu object
-        
-        // keyEquivalent specffifies key command, lowercase used cmd, uppercase uses cmd + shift
-        //menu.addItem(NSMenuItem(title: "✔ Light Mode", action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: "l"))
         var key = ""
         if sysSetting == "Toggle Light Mode" { key = "l" }
         else { key = "d" }
+        
         menu.addItem(NSMenuItem(title: sysSetting, action: #selector(AppDelegate.switch_mode(_:)), keyEquivalent: key))
         menu.addItem(NSMenuItem.separator())
         
@@ -106,12 +101,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var allAppInfos: [appInfo] = []
         for app in appList {
     
-            let appName = bundleIDFor(appName: app)
-            let exempt = lightStatus(bundleID: appName)
+            let (appPath, bundle) = bundleIDFor(appName: app)
+            let exempt = lightStatus(bundleID: bundle)
+            
+            let appIcon = NSWorkspace.shared.icon(forFile: appPath!)
+            // force icon size to 18x18
+            appIcon.size = CGSize(width: 20.0, height: 20.0)
             
             // create object of appInfo with args, connected to NSNenuItem
-            let data = appInfo(name: app, bundleID: appName, exempt: exempt)
-            allAppInfos.append(data)
+            let data = appInfo(name: app, bundleID: bundle, exempt: exempt, path: appPath!, icon: appIcon)
+            allAppInfos.append(data) // storing all appinfo objects may be unneccesary...
+            
             
             let item = NSMenuItem(title: app.replacingOccurrences(of: ".app", with: ""),
                                   action: nil,
@@ -119,37 +119,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             item.representedObject = data
             item.action = #selector(AppDelegate.switch_app(_:))
             
-            
             // if app is exempt from dark mode, put checkmark next to menu item
-            if exempt { item.state = NSControl.StateValue.on }
-            
-            let swiftIcon = NSWorkspace.shared.icon(forFile: "/Applications/\(app)")
-            // force icon size to 18x18
-            swiftIcon.size = CGSize(width: 20.0, height: 20.0)
-            print(swiftIcon)
-            /*if !swiftIcon {
-                print("\(app) is null")
-                break
-            }*/
-        
-            /*
-            for icon in swiftIcon {
-                print(icon)
-            }*/
-            item.image = swiftIcon
-            
+            if data.exempt { item.state = NSControl.StateValue.on }
+            item.image = data.icon
             menu.addItem(item)
-            
-        }
-        
-        for app in allAppInfos {
-            print("\(app.name) --> \(app.bundleID) --> \(app.exempt)")
         }
     
         
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        
         statusItem.menu = menu
         
     }
