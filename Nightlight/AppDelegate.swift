@@ -104,6 +104,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         for app in appList {
     
             let (appPath, bundle) = bundleIDFor(appName: app)
+            
+            // protect against application not found
+            if appPath == nil { continue }
+            
             let exempt = lightStatus(bundleID: bundle)
             
             let appIcon = NSWorkspace.shared.icon(forFile: appPath!)
