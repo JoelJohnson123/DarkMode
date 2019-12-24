@@ -97,9 +97,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         for app in appList {
     
             let (appPath, bundle) = bundleIDFor(appName: app)
-            print(app)
             let exempt = lightStatus(bundleID: bundle)
-            print("here")
             
             let appIcon = NSWorkspace.shared.icon(forFile: appPath!)
             // force icon size to 18x18

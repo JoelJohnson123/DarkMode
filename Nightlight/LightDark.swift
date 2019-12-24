@@ -25,14 +25,15 @@ func shell(lPath: String, args: [String]) -> String {
     task.arguments = args
 
     let pipe = Pipe()
+    let errorPipe = Pipe()
     task.standardOutput = pipe
+    task.standardError = errorPipe
     task.launch()
    
-
-    print("1se")
     let data = pipe.fileHandleForReading.readDataToEndOfFile()
-    print("2nd")
+    _ = errorPipe.fileHandleForReading.readDataToEndOfFile()
     let output: String = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
+    
     task.waitUntilExit()
     return output
 }

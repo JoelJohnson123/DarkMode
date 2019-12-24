@@ -26,11 +26,11 @@
 	<string>Copyright © 2019 Joel Johnson. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
-	<key>LSUIElement</key>
-	<true/>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
+	<key>LSUIElement</key>
+	<true/>
 </dict>
 </plist>
