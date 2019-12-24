@@ -1,5 +1,4 @@
-//  Nightlight.app
-
+// Nightlight.app
 
 import Cocoa
 import Foundation
@@ -60,7 +59,7 @@ func bundleIDFor(appName: String) -> (String?, String) {
 // gets dark mode exclusion for an app, 1 means dark when dark, 0 means light when dark
 func lightStatus(bundleID:String) -> Bool{
     let status = shell(lPath: "/bin/bash", args:["-c", "defaults read \(bundleID) NSRequiresAquaSystemAppearance"])
-
+    
     if status == "1\n" { return true }
     else { return false } // takes system setting or has never been changed
 }

@@ -30,18 +30,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func applicationWillTerminate(_ aNotification: Notification) {
-    }
+    func applicationWillTerminate(_ aNotification: Notification) {}
     
  
     // function that switches dark/light mode
     // @objc prepares function for objective-c runtime at compilation
     @objc func switch_mode(_ sender: NSMenuItem) {
-        let task = Process();
-        task.launchPath = "/usr/bin/osascript"
-        task.arguments = ["/Users/Joel/Nightlight/Nightlight/ToggleDarkMode.scpt"]
-        task.launch()
+       
+        let source = """
+        tell application "System Events"
+            tell appearance preferences
+                set dark mode to not dark mode
+            end tell
+        end tell
+        """
         
+        let script = NSAppleScript(source: source)!
+        var error: NSDictionary?
+        script.executeAndReturnError(&error)
+ 
         // toggle item title
         if sender.title == "Toggle Dark Mode" {
             sender.title = "Toggle Light Mode"

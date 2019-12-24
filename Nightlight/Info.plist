@@ -32,5 +32,7 @@
 	<string>public.app-category.utilities</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Nightlight needs access to System Events in order to modify system appearences</string>
 </dict>
 </plist>
