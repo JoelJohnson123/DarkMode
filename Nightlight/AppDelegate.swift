@@ -39,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func switch_mode(_ sender: NSMenuItem) {
         let task = Process();
         task.launchPath = "/usr/bin/osascript"
-        task.arguments = ["/Users/Joel/Switch Appearence/Switch Appearence/ToggleDarkMode.scpt"]
+        task.arguments = ["/Users/Joel/Nightlight/Nightlight/ToggleDarkMode.scpt"]
         task.launch()
         
         // toggle item title

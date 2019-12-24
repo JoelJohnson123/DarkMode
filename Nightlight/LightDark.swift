@@ -32,6 +32,7 @@ func shell(lPath: String, args: [String]) -> String {
    
     let data = pipe.fileHandleForReading.readDataToEndOfFile()
     _ = errorPipe.fileHandleForReading.readDataToEndOfFile()
+    
     let output: String = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
     
     task.waitUntilExit()
