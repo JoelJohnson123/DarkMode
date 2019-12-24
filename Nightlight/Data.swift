@@ -1,4 +1,5 @@
 // Data.swift
+
 import Foundation
 import Cocoa
 

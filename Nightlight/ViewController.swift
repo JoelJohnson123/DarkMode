@@ -1,5 +1,5 @@
 //  ViewController.swift
-//  Switch Appearence
+//  Nightlight.app
 
 import Cocoa
 

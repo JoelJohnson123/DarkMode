@@ -1,8 +1,5 @@
 //  AppDelegate.swift
-//  Switch Appearence
-
-//  Joel Johnson on 12/17/18
-//  Copyright © 2018 Joel Johnson. All rights reserved.
+//  Nightlight.app
 
 import Cocoa
 import Foundation // allows running applescripts from cocoa applications
@@ -20,7 +17,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             // determine if system is in light or dark mode
             let out = shell(lPath: "/bin/bash", args:["-c", "defaults read -g AppleInterfaceStyle"])
-            print(out)
             
             var lightSetting: String = ""
             
@@ -35,7 +31,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
-        print("\nquitting...")
     }
     
  
@@ -102,7 +97,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         for app in appList {
     
             let (appPath, bundle) = bundleIDFor(appName: app)
+            print(app)
             let exempt = lightStatus(bundleID: bundle)
+            print("here")
             
             let appIcon = NSWorkspace.shared.icon(forFile: appPath!)
             // force icon size to 18x18
@@ -124,11 +121,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             item.image = data.icon
             menu.addItem(item)
         }
-    
-        
+            
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         statusItem.menu = menu
-        
     }
 }

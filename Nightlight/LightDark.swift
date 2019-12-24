@@ -1,10 +1,5 @@
-//
-//  LightDark.swift
-//  Switch Appearence
-//
-//  Created by Joel Johnson on 12/15/19.
-//  Copyright © 2019 Joel Johnson. All rights reserved.
-//
+//  Nightlight.app
+
 
 import Cocoa
 import Foundation
@@ -32,11 +27,13 @@ func shell(lPath: String, args: [String]) -> String {
     let pipe = Pipe()
     task.standardOutput = pipe
     task.launch()
-    
+   
+
+    print("1se")
     let data = pipe.fileHandleForReading.readDataToEndOfFile()
+    print("2nd")
     let output: String = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
     task.waitUntilExit()
-    
     return output
 }
 
@@ -45,7 +42,6 @@ func bundleIDFor(appName: String) -> (String?, String) {
     if let appPath = NSWorkspace.shared.fullPath(forApplication: appName) {
         if let itsBundle = Bundle(path: appPath) { // < in my build this condition fails if we're looking for the ID of the app we're running...
             if let itsID = itsBundle.bundleIdentifier {
-                print(itsID)
                 return (appPath, itsID)
             }
         } else {
@@ -59,25 +55,9 @@ func bundleIDFor(appName: String) -> (String?, String) {
     return (nil, "app name never found")
 }
 
-// get icon file from bundleID
-func getIcon(bundleID: String) {
-    if let appPath = NSWorkspace.shared.fullPath(forApplication: bundleID) {
-        if let itsBundle = Bundle(path: appPath) {
-            let icon = itsBundle.image
-            print(icon)
-                   //return icon
-               
-        }
-    }
-    //return nil
-}
-
-
-
 // gets dark mode exclusion for an app, 1 means dark when dark, 0 means light when dark
 func lightStatus(bundleID:String) -> Bool{
     let status = shell(lPath: "/bin/bash", args:["-c", "defaults read \(bundleID) NSRequiresAquaSystemAppearance"])
-    print("status: \(status)")
 
     if status == "1\n" { return true }
     else { return false } // takes system setting or has never been changed
