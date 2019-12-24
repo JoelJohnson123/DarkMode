@@ -131,6 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             menu.addItem(item)
         }
             
+     
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         statusItem.menu = menu

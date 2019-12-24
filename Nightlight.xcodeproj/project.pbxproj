@@ -15,6 +15,19 @@
 		5D50BAC023A6D085009B8674 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D50BABF23A6D085009B8674 /* Data.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5DDB424A23B27E9D00847DF6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5D369AC721C842620074D187 /* Nightlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nightlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D369ACA21C842620074D187 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -25,6 +38,7 @@
 		5D369AD421C842630074D187 /* Nightlight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nightlight.entitlements; sourceTree = "<group>"; };
 		5D50BABD23A6C3D0009B8674 /* LightDark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDark.swift; sourceTree = "<group>"; };
 		5D50BABF23A6D085009B8674 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		5DDB423923B27E9D00847DF6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				5D369AC921C842620074D187 /* Nightlight */,
+				5DDB423823B27E9D00847DF6 /* Frameworks */,
 				5D369AC821C842620074D187 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,6 +84,14 @@
 			path = Nightlight;
 			sourceTree = "<group>";
 		};
+		5DDB423823B27E9D00847DF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5DDB423923B27E9D00847DF6 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,6 +102,7 @@
 				5D369AC321C842620074D187 /* Sources */,
 				5D369AC421C842620074D187 /* Frameworks */,
 				5D369AC521C842620074D187 /* Resources */,
+				5DDB424A23B27E9D00847DF6 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -95,7 +119,7 @@
 		5D369ABF21C842620074D187 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Joel Johnson";
 				TargetAttributes = {
@@ -279,17 +303,19 @@
 		5D369AD821C842630074D187 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Nightlight/Nightlight.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 48P3FG4QT5;
 				INFOPLIST_FILE = Nightlight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Joel-Johnson.Nightlight";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joel-johnson.Nightlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -298,17 +324,19 @@
 		5D369AD921C842630074D187 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Nightlight/Nightlight.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 48P3FG4QT5;
 				INFOPLIST_FILE = Nightlight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Joel-Johnson.Nightlight";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joel-johnson.Nightlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};

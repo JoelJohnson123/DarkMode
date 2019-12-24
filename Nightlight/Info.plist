@@ -20,19 +20,19 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Nightlight needs access to System Events in order to modify system appearences</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 Joel Johnson. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.utilities</string>
-	<key>LSUIElement</key>
-	<true/>
-	<key>NSAppleEventsUsageDescription</key>
-	<string>Nightlight needs access to System Events in order to modify system appearences</string>
 </dict>
 </plist>
